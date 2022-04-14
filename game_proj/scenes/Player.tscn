@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/Player.gd" type="Script" id=1]
+[ext_resource path="res://assets/npc_female_0001_fixed.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 20.4182, 29.4896 )
+
+[node name="Player" type="KinematicBody2D"]
+position = Vector2( 50, 50 )
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( -1.34336, 0.85112 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -3.37786, 3.57692 )
+shape = SubResource( 1 )
+
+[node name="PlayerCamera" type="Camera2D" parent="."]
+position = Vector2( -0.148651, 0.297302 )
+current = true
