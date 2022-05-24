@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/npc_female_0001_fixed.png" type="Texture" id=2]
+[ext_resource path="res://assets/health_bar_full.png" type="Texture" id=3]
+[ext_resource path="res://assets/health_bar_halfl.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 20.4182, 29.4896 )
@@ -22,3 +24,15 @@ shape = SubResource( 1 )
 [node name="PlayerCamera" type="Camera2D" parent="."]
 position = Vector2( -0.148651, 0.297302 )
 current = true
+
+[node name="TextureProgress" type="TextureProgress" parent="."]
+margin_left = -23.6792
+margin_top = -64.2208
+margin_right = 56.3208
+margin_bottom = 15.7792
+rect_scale = Vector2( 0.5, 0.5 )
+texture_over = ExtResource( 4 )
+texture_progress = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

@@ -1,19 +1,24 @@
 extends Node2D
 
 
-var noise = OpenSimplexNoise.new()
+export var width = 128
+export var height = 128
+onready var tilemap = $TileMap
+var simp_noise = OpenSimplexNoise.new()
 
 
 func _ready():
-	
-	noise.period = 32
-	noise.persistence = 0.3
-	
-	for x in range(30):
-		for y in range(20):
-			var noise_height = noise.get_noise_1d(x)
-			
-			if ceil(noise_height * 10) < y or y > 5:
-				$TileMap.set_cellv(Vector2(x,y), 0)
-	
-	$TileMap.update_bitmask_region(Vector2(0,0), Vector2(300,200))
+	randomize()
+	simp_noise.seed = randi()
+	simp_noise.octaves = 5
+	create_map()
+
+func create_map() -> void:
+	for x in width:
+		for y in height:
+			var rand = floor((abs(simp_noise.get_noise_2d(x,y))*100))
+			tilemap.set_cell(x, y, rand)
+
+func _input(event):
+	if event.is_action_pressed("ui_accept"):
+		get_tree().reload_current_scene()
